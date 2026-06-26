@@ -69,12 +69,3 @@ Reload Kitty from inside Kitty:
 ```sh
 kill -SIGUSR1 "$KITTY_PID"
 ```
-
-## GitHub
-
-This repo is local for now. To publish later:
-
-```sh
-git remote add origin git@github.com:<user>/dotfiles.git
-git push -u origin main
-```
