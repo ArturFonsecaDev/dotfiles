@@ -1,6 +1,23 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 vim.g.lazyvim_php_lsp = "intelephense"
 
+-- nvim-treesitter main uses this Neovim 0.12 helper while LazyVim still supports 0.11.
+if vim.list and not vim.list.unique then
+  function vim.list.unique(values)
+    local seen = {}
+    local result = {}
+
+    for _, value in ipairs(values) do
+      if not seen[value] then
+        seen[value] = true
+        result[#result + 1] = value
+      end
+    end
+
+    return result
+  end
+end
+
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
   local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })

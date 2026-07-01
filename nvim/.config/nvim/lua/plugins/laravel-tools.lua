@@ -21,6 +21,12 @@ end
 
 return {
 	{
+		"nvim-treesitter/nvim-treesitter",
+		opts = {
+			ensure_installed = { "blade" },
+		},
+	},
+	{
 		"neovim/nvim-lspconfig",
 		opts = {
 			servers = {
@@ -33,6 +39,34 @@ return {
 						},
 					},
 				},
+				laravel_ls = {},
+				emmet_language_server = {
+					filetypes = { "blade" },
+					init_options = {
+						includeLanguages = {
+							blade = "html",
+						},
+					},
+				},
+				tailwindcss = {
+					settings = {
+						tailwindCSS = {
+							includeLanguages = {
+								blade = "html",
+							},
+						},
+					},
+				},
+			},
+		},
+	},
+	{
+		"mason-org/mason.nvim",
+		opts = {
+			ensure_installed = {
+				"blade-formatter",
+				"emmet-language-server",
+				"laravel-ls",
 			},
 		},
 	},
